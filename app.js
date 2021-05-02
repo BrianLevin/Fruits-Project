@@ -7,7 +7,7 @@ const url= 'mongodb://localhost:27017';
 
 const dbName = 'fruitsDB';
 
-const client = new MongoClient(url);
+const client = new MongoClient(url,{useUnifiedTopology: true});
 
 client.connect(function(err){
 assert.equal(null, err);
