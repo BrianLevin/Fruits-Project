@@ -15,7 +15,9 @@ console.log('connected successfully to server');
 
 const db= client.db(dbName);
 
-client.close();
+insertDocuments(db, function(){
+    client.close();
+})
 
 })
 
