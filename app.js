@@ -1,22 +1,15 @@
 const congoose = require(" mongoose");
+const { Mongoose } = require("mongoose");
 
-const url= 'mongodb://localhost:27017';
+mongoose.connect("mongodb:localhost:27017/fruitsDB")
 
-const dbName = 'fruitsDB';
 
-const client = new MongoClient(url,{useUnifiedTopology: true});
-
-client.connect(function(err){
-assert.equal(null, err);
-console.log('connected successfully to server');
-
-const db= client.db(dbName);
 
 insertDocuments(db, function(){
     client.close();
 })
 
-})
+
 
 const insertDocuments= function(db,callback){
 
