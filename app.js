@@ -43,7 +43,9 @@ fruit.save();
 
 const personSchema = new mongoose.Schema ({
     name: String,
-    age: Number
+    age: Number,
+    //embedding a fruit document in person schema
+    favouriteFruit: fruitSchema
     
 
 
@@ -51,12 +53,33 @@ const personSchema = new mongoose.Schema ({
 
 // name person will apply to schema
 const Person =  mongoose.model("Person", personSchema);
-//   created new person document, from  above model, from  above schema
-const person = new Person ({
-    name: "John",
-    age: 30 
-});
-// save new person document into collections into fruits db
+
+const mango= new Fruit ({
+    name: "Mango",
+    score: 6,
+    review: "Good Fruit!"
+})
+
+
+
+mango.save()
+
+Person.updateOne({name: "John"}, {favouriteFruit: mango}, function (err){
+    if (err) {
+        console.log(err)
+     } else{
+         console.log("Sucessfully updated the document ")
+
+     }
+})
+
+   //created new person document, from  above model, from  above schema
+//  const person = new Person ({
+//      name: "Amy",
+//      age: 12,
+//      favouriteFruit: pineapple
+//  });
+ //save new person document into collections into fruits db
 //person.save();
 
 // const kiwi = new Fruit({
@@ -130,11 +153,11 @@ if(err) {
 
 // })
 
-Person.deleteMany({name: "John"}, function(err){
-  if (err) {
-console.log(err);
+// Person.deleteMany({name: "John"}, function(err){
+//   if (err) {
+// console.log(err);
 
-  }  else{
-      console.log("Successfully  deleted  all the documents")
-  }
-})
+//   }  else{
+//       console.log("Successfully  deleted  all the documents")
+//   }
+// })
