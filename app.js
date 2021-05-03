@@ -6,7 +6,12 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true }
 // blue print structure of data
 const fruitSchema = new mongoose.Schema ({
     name: String,
-    rating: Number,
+    // validation to make sure data is correct  during the application run
+    rating: {
+        type: Number,
+        min: 1,
+        max: 10
+    },
     review: String
 
 
@@ -20,14 +25,14 @@ const Fruit =  mongoose.model("Fruit", fruitSchema);
 //   created new fruit document, from  above model, from  above schema
 const fruit = new Fruit ({
     name: "Apple",
-    rating: 7,
+    rating: 34,
     review: "Pretty  solid as a fruit"
 
 });
 // saves fruit document into fruits connection inside fruits db
 
 // commented out fruit.save for now because it will keep inserted apples into the data base collection
-//fruit.save();
+fruit.save();
 
 const personSchema = new mongoose.Schema ({
     name: String,
@@ -47,25 +52,25 @@ const person = new Person ({
 // save new person document into collections into fruits db
 //person.save();
 
-const kiwi = new Fruit({
-    name: "Kiwi",
-    score: 10,
-    review: "The best fruit!"
-});
+// const kiwi = new Fruit({
+//     name: "Kiwi",
+//     score: 10,
+//     review: "The best fruit!"
+// });
 
-const orange = new Fruit({
-    name: "Orange",
-    score: 6,
-    review: "Sour taste!"
-});
+// const orange = new Fruit({
+//     name: "Orange",
+//     score: 6,
+//     review: "Sour taste!"
+// });
 
 
 
-const banana = new Fruit({
-    name: "Banana",
-    score: 7,
-    review: "great taste!"
-});
+// const banana = new Fruit({
+//     name: "Banana",
+//     score: 7,
+//     review: "great taste!"
+// });
 
 // allows to insert an array of documents into a model into the collection
 // Fruit.insertMany([kiwi,orange,banana], function(err){
