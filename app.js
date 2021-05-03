@@ -1,14 +1,7 @@
-const congoose = require(" mongoose");
-const { Mongoose } = require("mongoose");
-
-mongoose.connect("mongodb:localhost:27017/fruitsDB")
+const mongoose = require("mongoose");
 
 
-
-insertDocuments(db, function(){
-    client.close();
-})
-
+mongoose.connect("mongodb:localhost:27017/fruitsDB", { useNewUrlParser: true })
 
 
 const insertDocuments= function(db,callback){
