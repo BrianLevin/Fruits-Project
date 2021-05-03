@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-mongoose.connect("mongodb:localhost:27017/fruitsDB", { useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true });
 
 
 const fruitSchema = new mongoose.Schema ({
@@ -18,7 +18,7 @@ const fruit = new Fruit ({
     rating: 7,
     review: "Pretty  solid as a fruit"
 
-})
+});
 
 fruit.save();
 
