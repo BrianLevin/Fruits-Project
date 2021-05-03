@@ -109,12 +109,23 @@ if(err) {
 
 // update new document using the id name from terminal and then giving it a name
 
-Fruit.updateOne({_id: "609020299f289e5a1fd9f5f7"},{name:"Peach"}, function(err){
-if(err){
-    console.log(err);
-} else{
-console.log("sucessfully updated the document!");
+// Fruit.updateOne({_id: "609020299f289e5a1fd9f5f7"},{name:"Peach"}, function(err){
+// if(err){
+//     console.log(err);
+// } else{
+// console.log("sucessfully updated the document!");
 
+// }
+
+// });
+// method to delete a document
+Fruit.deleteOne({name: "Peach"}, function(err){
+if(err){
+
+    console.log(err)
+} else {
+
+    console.log("Successfully  deleted the document")
 }
 
-});
+})
