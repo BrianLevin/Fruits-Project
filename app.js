@@ -5,7 +5,13 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true }
 
 // blue print structure of data
 const fruitSchema = new mongoose.Schema ({
-    name: String,
+    name: {
+        type: String,
+        required: [true,"Please check your data entry, no name specified" ]
+
+
+
+    },
     // validation to make sure data is correct  during the application run
     rating: {
         type: Number,
