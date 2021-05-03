@@ -1,7 +1,4 @@
-
-const MongoClient = require('mongodb').MongoClient;
-
-const assert= require('assert');
+const congoose = require(" mongoose");
 
 const url= 'mongodb://localhost:27017';
 
