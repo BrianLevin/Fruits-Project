@@ -45,7 +45,7 @@ const person = new Person ({
     age: 30 
 });
 // save new person document into collections into fruits db
-person.save();
+//person.save();
 
 const kiwi = new Fruit({
     name: "Kiwi",
@@ -68,12 +68,26 @@ const banana = new Fruit({
 });
 
 // allows to insert an array of documents into a model into the collection
-Fruit.insertMany([kiwi,orange,banana], function(err){
-if (err){
-    console.log(err);
-} else{
+// Fruit.insertMany([kiwi,orange,banana], function(err){
+// if (err){
+//     console.log(err);
+// } else{
 
-    console.log("successfully saved all fruits to fruitsDB!")
+//     console.log("successfully saved all fruits to fruitsDB!")
+// }
+
+// });
+
+// will read into fruits db and show in terminal
+Fruit.find(function(err, fruits){
+if(err) {
+
+    console.log(err);
+} else {
+
+    fruits.forEach(function(fruit){
+        console.log(fruit.name);
+    });
 }
 
-});
+})
