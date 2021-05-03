@@ -5,6 +5,7 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true }
 
 // blue print structure of data
 const fruitSchema = new mongoose.Schema ({
+    // validation check for name
     name: {
         type: String,
         required: [true,"Please check your data entry, no name specified" ]
@@ -30,9 +31,9 @@ const fruitSchema = new mongoose.Schema ({
 const Fruit =  mongoose.model("Fruit", fruitSchema);
 //   created new fruit document, from  above model, from  above schema
 const fruit = new Fruit ({
-    name: "Apple",
-    rating: 34,
-    review: "Pretty  solid as a fruit"
+    
+    rating: 7,
+    review: "Peaches are a solid fruit"
 
 });
 // saves fruit document into fruits connection inside fruits db
@@ -104,4 +105,16 @@ if(err) {
     });
 }
 
-})
+});
+
+// update new document using the id name from terminal and then giving it a name
+
+Fruit.updateOne({_id: "609020299f289e5a1fd9f5f7"},{name:"Peach"}, function(err){
+if(err){
+    console.log(err);
+} else{
+console.log("sucessfully updated the document!");
+
+}
+
+});
