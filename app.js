@@ -84,7 +84,10 @@ if(err) {
 
     console.log(err);
 } else {
+// closes mongoose connection interminal once it runs
+    mongoose.connection.close();
 
+// will loop through fruits object and get the name of the fruits
     fruits.forEach(function(fruit){
         console.log(fruit.name);
     });
